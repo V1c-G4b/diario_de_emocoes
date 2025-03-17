@@ -1,25 +1,25 @@
-import React, {Component} from 'react';
-import { StyleSheet, View,  ScrollView } from 'react-native';
+import React, { Component } from 'react';
+import { StyleSheet, View, ScrollView } from 'react-native';
 import Logo from '../../../components/logo.js';
 import Botao from '../../../components/botao.js';
 import Header from '../../../components/header.js';
 
-class HomeScreen extends Component{
-    constructor(props){
-        super(props);
-        this.state = {
-            title:'Animus',
-            corBotao:'#FFF',
-            corTextoBotao:'gray'
-        }
-
+class HomeScreen extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      title: 'Animus',
+      corBotao: '#FFF',
+      corTextoBotao: 'gray',
     };
-    render(){
-        return(
-            <View style={{flex:1}}>
-                <Header userName='Sergio' />
-                <ScrollView style={styles.container1}>
-                    <Botao
+  }
+
+  render() {
+    return (
+      <View style={{ flex: 1 }}>
+        <Header userName="Sergio" />
+        <ScrollView style={styles.container1}>
+        <Botao
                         color={this.state.corTextoBotao}
                         background={this.state.corBotao}
                         materialIcons='edit'
@@ -66,25 +66,30 @@ class HomeScreen extends Component{
                         background={this.state.corBotao}
                         materialIcons='edit'
                         alignItems='space-between'
-                        titleRight={'27/02/2025 🙂'} />                                             
-                </ScrollView>
+                        titleRight={'27/02/2025 🙂'} />      
+        </ScrollView>
 
-                <View style={styles.container2}>                   
-                <Botao
-                        color={'#FFFEFE'} 
-                        background={'#9C51C4'}
-                        title={'Mais'} />                                     
-                </View>
-            </View>
-        );
-    }
+        <View style={styles.container2}>
+          <Botao
+            color={'#FFFEFE'}
+            background={'#9C51C4'}
+            title={'Mais'}
+            onPress={() => this.props.navigation.navigate('Child')}
+          />
+        </View>
+      </View>
+    );
+  }
 }
 
 const styles = StyleSheet.create({
-    container1:{flex:2,
-        borderColor:'gray'
-    }
+  container1: {
+    flex: 2,
+    borderColor: 'gray',
+  },
+  container2: {
+    padding: 20,
+  },
 });
-
 
 export default HomeScreen;

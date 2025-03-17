@@ -1,9 +1,10 @@
+// src/pages/usuario/login/index.js
 import React, { Component } from "react";
-import { StyleSheet, Text, View, TextInput, TouchableOpacity } from "react-native";
+import { StyleSheet, Text, View, TextInput } from "react-native";
 import Logo from "./../../../components/logo.js";
 import Botao from "./../../../components/botao.js";
-import { validarLogin } from "./../../../database/usuario.js"; // Importa a função de login
-
+import { validarLogin } from "./../../../database/usuario.js";
+import { AuthContext } from "../../../contexts/AuthContext.js";
 
 class LoginScreen extends Component {
   constructor(props) {
@@ -15,12 +16,14 @@ class LoginScreen extends Component {
     };
   }
 
+  static contextType = AuthContext;
 
   handleLogin = async () => {
     const { userName, password } = this.state;
     const valido = await validarLogin(userName, password);
 
     if (valido) {
+      this.context.setIsAuthenticated(true);
       alert("Login bem-sucedido!");
     } else {
       alert("Usuário ou senha inválidos!");
@@ -50,7 +53,12 @@ class LoginScreen extends Component {
             onChangeText={(text) => this.setState({ password: text })}
           />
 
-          <Botao color={"#FFFEFE"} background={"#9C51C4"} title={"Logar"} onPress={this.handleLogin} />
+          <Botao
+            color={"#FFFEFE"}
+            background={"#9C51C4"}
+            title={"Logar"}
+            onPress={this.handleLogin}
+          />
         </View>
       </View>
     );
