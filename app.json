@@ -19,10 +19,21 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.oiciruam08.diario_de_emocoes"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      "expo-font",
+      "expo-sqlite",
+      "expo-router"
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "75d6a19c-3b4e-4549-9228-f321980fbfa3"
+      }
     }
   }
 }

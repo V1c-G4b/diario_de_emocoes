@@ -1,20 +1,25 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import { StyleSheet } from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient';
+
+
+import Login from './src/pages/usuario/login/index.js';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <LinearGradient
+    colors={['#BE7CFF', '#DAD8FF']} // Cores do gradiente
+    style={styles.container}
+    start={{ x: 0, y: 0 }} // Direção do gradiente (top-left)
+    end={{ x: 1, y: 1 }}   // Direção do gradiente (bottom-right)
+    > 
+      <Login />
+    </LinearGradient> 
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
   },
 });
